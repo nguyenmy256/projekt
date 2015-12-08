@@ -1,11 +1,14 @@
 #Projekt-Geometrierechner
 import math
 
-
+#Beschreibung des Programms
 print ("Geometrierechner")
 print ("Es können mit diesem Rechner nun Berechnungen zum Flächeninhalt, Umfang, Volumen")
 print ("und Oberflächeninhalt durchgeführt werden. Für die Auswahl immer die Zahl oder")
 print ("den jeweiligen Buchstaben, der in der Klammer steht, eingeben.")
+
+#Verfügbare Figuren
+
 print ("Verfügbare Figuren/Körper:")
 print ("Ebene Figuren: - Quadrat [1]        Körper: - Würfel [a]")
 print ("               - Rechteck [2]               - Quader [b]")
@@ -15,7 +18,11 @@ print ("               - Trapez [5]                 - Quadratische Pyramide [e]"
 print ("               - Kreis [6]                  - Kegel [f]")
 print ("               - Kreisbogen [7]             - Kugel [g]")
 
+#Figurenauswahl des Benutzers
+
 figurenauswahl= input ("Bitte wähle eine der oben aufgezählten Figuren aus: ")
+
+#Berechnungen zum Quadrat
 if figurenauswahl == "1":
     x= input("Bitte gib an ob du den Flächeninhalt[f], den Umfang[u] oder beides[b] ausrechnen willst. ")
     if x=="f":
@@ -33,6 +40,7 @@ if figurenauswahl == "1":
         print ("Der Umfang des Quadrates beträgt", quadratu,"Flächeneinheiten.")
         print ("Der Flächeninhalt des Quadrats beträgt",quadrata,"Flächeneinheiten.")
 
+#Berechnungen zum Rechteck
 elif figurenauswahl=="2":
     x= input("Bitte gib an ob du den Flächeninhalt[f], den Umfang[u] oder beides[b] ausrechnen willst. ")
     if x=="f":
@@ -53,6 +61,7 @@ elif figurenauswahl=="2":
         print("Der Flächeninhalt des Rechtecks beträgt", rechtecka, "Flächeneinheiten.")
         print("Der Umfang des Rechtecks beträgt", rechtecku, "Flächeneinheiten.")
 
+#Berechnungen zum Dreieck
 elif figurenauswahl =="3":
     x= input("Bitte gib an ob du den Flächeninhalt[f], den Umfang[u] oder beides[b] ausrechnen willst. ")
     if x=="f":
