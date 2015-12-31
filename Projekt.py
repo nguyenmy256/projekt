@@ -11,7 +11,7 @@ print ("Ebene Figuren: - Quadrat [1]                        Körper: - Würfel [
 print ("               - Rechteck [2]                               - Quader [b]")
 print ("               - Dreieck [3]                                - Prisma [c]")
 print ("               - Parallelogramm [4]                         - Zylinder [d]")
-print ("               - Trapez [5]                                 - Quadratische Pyramide [e]")
+print ("               - Trapez [5]                                 - Pyramide [e]")
 print ("               - Kreis [6]                                  - Kegel [f]")
 print ("               - Kreisbogen und Kreissektor [7]             - Kugel [g]")
     
@@ -28,12 +28,11 @@ def figurenauswahl():
         elif figurenauswahl =="b": quader()
         elif figurenauswahl =="c":prisma()
         elif figurenauswahl =="d":zylinder()
-        elif figurenauswahl =="e":quadratischepyramide()
+        elif figurenauswahl =="e":pyramide()
         elif figurenauswahl =="f": kegel()
         elif figurenauswahl =="g":kugel()
         else:
             print ("Error:",figurenauswahl, "steht nicht zur Vefügung.")
-
     
 def quadrat():
     x= None
@@ -254,7 +253,7 @@ def quader():
     while x not in ("v", "o","b"):
         if x is not None:
             print ("Sorry, aber das habe ich nicht verstanden.")
-        x=input ("Möchtest du das Volumen[v], die Oberfläche[o] oder beides[b] des Quaderss berechnen? ")
+        x=input ("Möchtest du das Volumen[v], die Oberfläche[o] oder beides[b] des Quaders berechnen? ")
         if x=="v":
             a= float(input("Gib die Länge des Quaders an. "))
             b= float(input("Gib die Breite des Quaders an. "))
@@ -278,22 +277,177 @@ def quader():
     
 def prisma():
     x= None
-    while x not in ("v", "o","b"):
+    while x not in ("v", "o","m","a"):
         if x is not None:
             print ("Sorry, aber das habe ich nicht verstanden.")
-        x=input("Soll das Volumen[v], die Oberfläche[o] oder beides[b] vom Prisma berechnet werden? ")
+        x=input("Soll das Volumen[v], die Oberfläche[o], die Mantelfläche [m] oder alles [a] vom Prisma berechnet werden? ")
         if x=="v":
-            g= float(input("Gib die Grundfläche des Prismas an"))
-            h=float(input ("Gib die Höhe des Prismas an"))
+            g= float(input("Gib die Grundfläche des Prismas an. "))
+            h=float(input ("Gib die Höhe des Prismas an. "))
             prismav= g*h
             print ("Das Volumen des Prismas beträgt", prismav,"Flächeneinheiten.")
         elif x=="o":
-            g= float (input("Gib die Grundseite des Prismas an. "))
+            g= float (input("Gib die Grundfläche des Prismas an. "))
             m= float (input("Gib die Mantelfläche des Prismas an. "))
             prismao= 2*g+m
             print ("Die Oberfläche des Prismas beträgt", prismao,"Flächeneinheiten.")
+        elif x=="m":
+            h=float(input ("Gib die Höhe des Prismas an. "))
+            u=float(input("Gib den Umfang der Grundfläche des Prismas an. "))
+            prismam= h*u
+            print ("Die Mantelfläche des Prismas beträgt", prismam,"Flächeneinheiten.")
+        else:
+            g= float(input("Gib die Grundfläche des Prismas an. "))
+            h=float(input ("Gib die Höhe des Prismas an. "))
+            u=float(input("Gib den Umfang der Grundfläche des Prismas an. "))
+            prismav= g*h
+            prismao= 2*g+m
+            prismam= h*u
+            print ("Die Mantelfläche des Prismas beträgt", prismam,"Flächeneinheiten.")
+            print ("Die Oberfläche des Prismas beträgt", prismao,"Flächeneinheiten.")
+            print ("Das Volumen des Prismas beträgt", prismav,"Flächeneinheiten.")
 
-#main
+def zylinder():
+    x= None
+    while x not in ("u", "g","m","o", "v", "a"):
+        if x is not None:
+            print ("Sorry, aber das habe ich nicht verstanden.")
+        x=input("Soll der Umfang [u], die Grundfläche [g], das Volumen[v], die Oberfläche[o], die Mantelfläche [m] oder alles [a] vom Zylinder berechnet werden? ")
+    if x=="u":
+        r=float(input("Gebe bitte den Zylinder Radius an: "))
+        zylinderu= 2*math.pi*r
+        print ("Der Umfang des Zylinders beträgt",zylinderu,"Flächeneinheiten.")
+    elif x=="g":
+        r=float(input("Gebe bitte den Zylinder Radius an: "))
+        zylinderg= math.pi*r**2
+        print ("Die Grundfläche des Zylinders beträgt",zylinderg, "Flächeneinheiten.")
+    elif x=="m":
+        r=float(input("Gebe bitte den Zylinder Radius an: "))
+        h=float(input("Gebe bitte die Zylinder Höhe an: "))
+        zylinderm= 2*math.pi*r*h
+        print ("Die Mantelfläche des Zylinders beträgt",zylinderm, "Flächeneinheiten.")
+    elif x=="o":
+        r=float(input("Gebe bitte den Zylinder Radius an: "))
+        h=float(input("Gebe bitte die Zylinder Höhe an: "))
+        zylindero= 2*math.pi*r**2+2*math.pi*r*h
+        print ("Die Oberfläche des Zylinders beträgt",zylindero,"Flächeneinheiten.")
+    elif x=="v":
+        r=float(input("Gebe bitte den Zylinder Radius an: "))
+        h=float(input("Gebe bitte die Zylinder Höhe an: "))
+        zylinderv= math.pi*r**2*h
+        print ("Das Volumen des Zylinders beträgt",zylinderv,"Flächeneinheiten.")
+    else:
+        r=float(input("Gebe bitte den Zylinder Radius an: "))
+        h=float(input("Gebe bitte die Zylinder Höhe an: "))
+        zylinderv= math.pi*r**2*h
+        zylindero= 2*math.pi*r**2+2*math.pi*r*h
+        zylinderm= 2*math.pi*r*h
+        zylinderg= math.pi*r**2
+        zylinderu= 2*math.pi*r
+        print ("Der Umfang des Zylinders beträgt",zylinderu,"Flächeneinheiten.")
+        print ("Die Grundfläche des Zylinders beträgt",zylinderg, "Flächeneinheiten.")
+        print ("Die Mantelfläche des Zylinders beträgt",zylinderm, "Flächeneinheiten.")
+        print ("Die Oberfläche des Zylinders beträgt",zylindero,"Flächeneinheiten.")
+        print ("Das Volumen des Zylinders beträgt",zylinderv,"Flächeneinheiten.")
+
+def pyramide():
+    x= None
+    while x not in ("o", "v", "b"):
+        if x is not None:
+            print ("Sorry, aber das habe ich nicht verstanden.")
+        x=input("Soll die Oberfläche[o], das Volumen [v] oder beides [b] von der Pyramide berechnet werden? ")
+    if x=="o":
+        g=float(input("Gebe bitte die Grundfläche der Pyramide an: "))
+        m=float(input("Gebe bitte die Mantelfläche der Pyramide an: "))
+        pyramideo=g+m
+        print("Die Oberfläche der Pyramide beträgt",pyramideo,"Flächeneinheiten.")
+    elif x=="v":
+        g=float(input("Gebe bitte die Grundfläche der Pyramide an: "))
+        h=float(input("Gebe bitte die Höhe der Pyramide an: "))
+        pyramidev= 1/3*g*h
+        print("Das Volumen der Pyramide beträgt",pyramidev,"Flächeneinheiten.")
+    else:
+        g=float(input("Gebe bitte die Grundfläche der Pyramide an: "))
+        m=float(input("Gebe bitte die Mantelfläche der Pyramide an: "))
+        h=float(input("Gebe bitte die Höhe der Pyramide an: "))
+        pyramideo=g+m
+        pyramidev= 1/3*g*h
+        print("Das Volumen der Pyramide beträgt",pyramidev,"Flächeneinheiten.")
+        print("Die Oberfläche der Pyramide beträgt",pyramideo,"Flächeneinheiten.")
+
+def kegel():
+   x= None
+   while x not in ("u", "g","s","m","o", "v", "a"):
+        if x is not None:
+            print ("Sorry, aber das habe ich nicht verstanden.")
+        x=input("Soll der Umfang [u], die Grundfläche [g], , die Seitenlinie [s], das Volumen[v], die Oberfläche[o], die Mantelfläche [m] oder alles [a] vom Zylinder berechnet werden? ")
+   if x=="u":
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        kegelu= 2*math.pi*r
+        print ("Der Umfang des Kegels beträgt",kegelu,"Flächeneinheiten.")
+   elif x=="g":
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        kegelg= math.pi*r**2
+        print ("Die Grundfläche des Kegels beträgt",kegelg, "Flächeneinheiten.")
+   elif x=="s":
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        h=float(input("Gebe bitte die Kegel Höhe an: "))
+        kegels= math.sqrt(r**2+h**2)
+        print ("Die Seitenlinie des Kegels beträgt", kegels,"Flächeneinheiten.")       
+   elif x=="m":
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        h=float(input("Gebe bitte die Kegel Seitenlinie an: "))
+        kegelm= math.pi*r*s
+        print ("Die Mantelfläche des Kegels beträgt",kegelm, "Flächeneinheiten.")
+   elif x=="o":
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        h=float(input("Gebe bitte die Kegel Seitenlinie an: "))
+        kegelo= math.pi*r**2+math.pi*r*s
+        print ("Die Oberfläche des Kegels beträgt",kegelo,"Flächeneinheiten.")
+   elif x=="v":
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        h=float(input("Gebe bitte die Kegel Höhe an: "))
+        kegelv= 1/3*math.pi*r**2*h
+        print ("Das Volumen des Kegels beträgt",kegelv,"Flächeneinheiten.")
+   else:
+        r=float(input("Gebe bitte den Kegel Radius an: "))
+        h=float(input("Gebe bitte die Kegel Höhe an: "))
+        kegelv= 1/3*math.pi*r**2*h
+        kegelo= math.pi*r**2+math.pi*r*s
+        kegelm= math.pi*r*s
+        kegels= math.sqrt(r**2+h**2)
+        kegelg= math.pi*r**2
+        kegelu= 2*math.pi*r
+        print ("Der Umfang des Kegels beträgt",kegelu,"Flächeneinheiten.")
+        print ("Die Grundfläche des Kegels beträgt",kegelg, "Flächeneinheiten.")
+        print ("Die Seitenlinie des Kegels beträgt", kegels,"Flächeneinheiten.")
+        print ("Die Mantelfläche des Kegels beträgt",kegelm, "Flächeneinheiten.")
+        print ("Die Oberfläche des Kegels beträgt",kegelo,"Flächeneinheiten.")
+        print ("Das Volumen des Kegels beträgt",kegelv,"Flächeneinheiten.")
+
+def kugel():
+    x= None
+    while x not in ("o", "v", "b"):
+        if x is not None:
+            print ("Sorry, aber das habe ich nicht verstanden.")
+        x=input("Soll die Oberfläche[o], das Volumen [v] oder beides [b] der Kugel berechnet werden? ")
+    if x=="o":
+        r=float(input("Gebe bitte den Kugel Radius an: "))
+        kugelo=4*math.pi*r**2
+        print ("Die Oberfläche der Kugel beträgt",kugelo, "Flächeneinheiten.")
+    elif x=="v":
+        r=float(input("Gebe bitte den Kugel Radius an: "))
+        kugelv= 4/3*math.pi*r**3
+        print ("Das Volumen der Kugel beträgt",kugelv, "Flächeneinheiten.")
+    else:
+        r=float(input("Gebe bitte den Kugel Radius an: "))
+        kugelv= 4/3*math.pi*r**3
+        kugelo=4*math.pi*r**2
+        print ("Die Oberfläche der Kugel beträgt",kugelo, "Flächeneinheiten.")
+        print ("Das Volumen der Kugel beträgt",kugelv, "Flächeneinheiten.")
+        
+
+#mainloop
             
 while True:
     start = None
